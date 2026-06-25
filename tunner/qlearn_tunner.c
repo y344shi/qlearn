@@ -3,6 +3,7 @@
  * Description: Jank-aware frequency scaler: uses MISC-like baseline from kernel
  *   target_freq, then amplifies 0.5x/0.75x/1.0x/1.25x based on last 5 frames jank.
  */
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <lib/utils.h>
@@ -93,6 +94,29 @@ static int handle_load_change(const struct pm_listener *listener, void *data)
 		new_freq = priv->prop->max_freq;
 
 	dfc_driver_set_freq(priv->prop, new_freq, FREQ_TABLE_CEIL_METHOD);
+
+	/* --- Trace collection -------------------------------------------------
+	 * Emit one parseable line per event so real device traces can be harvested
+	 * for offline hyperparameter tuning (feed them to tunner/dfc_qlearn_sim.c).
+	 * The four features mirror struct __sched_ind_qlearn_features and match the
+	 * simulator: load / refresh / power / frame_budget, plus the jank counter
+	 * and the frequency we set. Harvest with:  dmesg | grep ' dfs '
+	 * NOTE: verify the exact field names against the kernel header for your
+	 * build (cluster[] vs clusters_data[], member spellings).
+	 */
+	{
+		struct __sched_ind_qlearn_features *qf = &chg->features;
+		char term[160];
+		snprintf(term, sizeof(term),
+			"load=%u rr=%u power=%u fbud=%d jank=%llu freq=%u",
+			qf->cluster[priv->cluster_id].avg_load,
+			qf->curr_refresh_rate,
+			qf->cluster[priv->cluster_id].curr_power,
+			qf->frame_budget,
+			cur_jank,
+			new_freq);
+		hm_error("dfs %s\n", term);
+	}
 
 	hm_error("QLM: target=%u scale=%u%% new=%u jfree=%d/%d jank=%llu\n",
 		 priv->target_freq, scale, new_freq,

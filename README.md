@@ -47,7 +47,8 @@ Equivalent direct commands (copy-paste; no menu required):
 
     # Kernel-migration simulator: every agent behind one init/select/destroy vtable
     gcc-12 -O2 -std=c99 -Iinclude -o dfc_sim tunner/dfc_qlearn_sim.c contest/reg_*.c
-    ./dfc_sim
+    ./dfc_sim            # rank all agents
+    ./dfc_sim sweep      # hyperparameter sweep -> Pareto front of jank vs power
 
 `runner` environments: `windy`, `arena`, `frozen`, `shift`, `swirl`, `phone`.
 Plots are written to `results/*.svg` (pure-stdlib SVG). Example outputs are
