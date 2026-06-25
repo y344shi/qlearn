@@ -24,7 +24,7 @@ NVFLAGS  ?= -O2 -gencode arch=compute_90,code=compute_90
 GPUBIN    = cliff_gpu
 GPUSRC    = src/cliff_wind_qlearn_gpu.cu
 
-.PHONY: all run plots agent plug phone swirl viz contest tournament tests gpu run-gpu clean
+.PHONY: all run plots agent plug phone swirl viz dfcsim contest tournament tests gpu run-gpu clean
 all: $(BIN) $(AGENTBIN) $(PHONEBIN)
 
 $(BIN): $(SRC) include/qlearn.h
@@ -78,6 +78,12 @@ viz: pathviz
 pathviz: contest/pathviz.c $(wildcard contest/reg_*.c) $(wildcard contest/qval_*.c) $(wildcard include/*.h)
 	$(CC) $(CFLAGS) -o pathviz contest/pathviz.c $(wildcard contest/reg_*.c) $(wildcard contest/qval_*.c)
 
+# kernel-migration simulator: all 11 agents behind the init/select/destroy vtable
+dfcsim: dfc_sim
+	./dfc_sim
+dfc_sim: tunner/dfc_qlearn_sim.c $(wildcard contest/reg_*.c) $(wildcard include/*.h)
+	$(CC) $(CFLAGS) -o dfc_sim tunner/dfc_qlearn_sim.c $(wildcard contest/reg_*.c)
+
 # the GRAND TOURNAMENT: all 11 agents across the harder envs (arena/frozen/shift)
 tournament: $(TOURNEYBIN)
 	./$(TOURNEYBIN)
@@ -99,5 +105,5 @@ run-gpu: $(GPUBIN)
 	./$(GPUBIN)
 
 clean:
-	rm -f $(BIN) $(AGENTBIN) tuner_plug $(PHONEBIN) $(SWIRLBIN) $(CONTESTBIN) $(TOURNEYBIN) pathviz runner $(GPUBIN)
+	rm -f $(BIN) $(AGENTBIN) tuner_plug $(PHONEBIN) $(SWIRLBIN) $(CONTESTBIN) $(TOURNEYBIN) pathviz runner dfc_sim $(GPUBIN)
 	rm -rf results
