@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="462" font-family="monospace" font-size="13">
+<rect width="940" height="462" fill="white"/>
+<text x="470" y="26" text-anchor="middle" font-size="16" font-weight="bold">RL contest - deterministic cliff, persistent 10% exploration</text>
+<text x="470" y="46" text-anchor="middle" font-size="12" fill="#555">bar = online return while exploring (higher/longer = better); ranked best-first</text>
+<rect x="150" y="58" width="12" height="12" fill="#2b6cb0"/>
+<text x="166" y="68" font-size="11" fill="#333">off-policy</text>
+<rect x="300" y="58" width="12" height="12" fill="#1a8a3a"/>
+<text x="316" y="68" font-size="11" fill="#333">on-policy</text>
+<rect x="450" y="58" width="12" height="12" fill="#dd7711"/>
+<text x="466" y="68" font-size="11" fill="#333">planning</text>
+<rect x="600" y="58" width="12" height="12" fill="#888888"/>
+<text x="616" y="68" font-size="11" fill="#333">monte-carlo</text>
+<rect x="750" y="58" width="12" height="12" fill="#8a2be2"/>
+<text x="766" y="68" font-size="11" fill="#333">actor-critic</text>
+<text x="142" y="100" text-anchor="end" font-size="12">1. Actor-Critic</text>
+<rect x="150" y="85" width="391.2" height="20" fill="#8a2be2" opacity="0.85"/>
+<text x="549" y="100" font-size="12" fill="#222">online -11  |  eval -11  |  falls 0</text>
+<text x="142" y="132" text-anchor="end" font-size="12">2. Expected-SARSA</text>
+<rect x="150" y="117" width="340.7" height="20" fill="#1a8a3a" opacity="0.85"/>
+<text x="499" y="132" font-size="12" fill="#222">online -15  |  eval -11  |  falls 370</text>
+<text x="142" y="164" text-anchor="end" font-size="12">3. SARSA(lambda)</text>
+<rect x="150" y="149" width="302.9" height="20" fill="#1a8a3a" opacity="0.85"/>
+<text x="461" y="164" font-size="12" fill="#222">online -18  |  eval -13  |  falls 357</text>
+<text x="142" y="196" text-anchor="end" font-size="12">4. SARSA</text>
+<rect x="150" y="181" width="302.9" height="20" fill="#1a8a3a" opacity="0.85"/>
+<text x="461" y="196" font-size="12" fill="#222">online -18  |  eval -13  |  falls 308</text>
+<text x="142" y="228" text-anchor="end" font-size="12">5. n-step-SARSA</text>
+<rect x="150" y="213" width="265.0" height="20" fill="#1a8a3a" opacity="0.85"/>
+<text x="423" y="228" font-size="12" fill="#222">online -21  |  eval -13  |  falls 361</text>
+<text x="142" y="260" text-anchor="end" font-size="12">6. Q-learning</text>
+<rect x="150" y="245" width="164.0" height="20" fill="#2b6cb0" opacity="0.85"/>
+<text x="322" y="260" font-size="12" fill="#222">online -29  |  eval -9  |  falls 2387</text>
+<text x="142" y="292" text-anchor="end" font-size="12">7. Dyna-Q</text>
+<rect x="150" y="277" width="164.0" height="20" fill="#dd7711" opacity="0.85"/>
+<text x="322" y="292" font-size="12" fill="#222">online -29  |  eval -9  |  falls 2392</text>
+<text x="142" y="324" text-anchor="end" font-size="12">8. Prio-Sweeping</text>
+<rect x="150" y="309" width="151.4" height="20" fill="#dd7711" opacity="0.85"/>
+<text x="309" y="324" font-size="12" fill="#222">online -30  |  eval -9  |  falls 2433</text>
+<text x="142" y="356" text-anchor="end" font-size="12">9. Q(lambda)</text>
+<rect x="150" y="341" width="138.8" height="20" fill="#2b6cb0" opacity="0.85"/>
+<text x="297" y="356" font-size="12" fill="#222">online -31  |  eval -9  |  falls 2438</text>
+<text x="142" y="388" text-anchor="end" font-size="12">10. Double-Q</text>
+<rect x="150" y="373" width="126.2" height="20" fill="#2b6cb0" opacity="0.85"/>
+<text x="284" y="388" font-size="12" fill="#222">online -32  |  eval -9  |  falls 2615</text>
+<text x="142" y="420" text-anchor="end" font-size="12">11. Monte-Carlo</text>
+<rect x="150" y="405" width="88.3" height="20" fill="#888888" opacity="0.85"/>
+<text x="246" y="420" font-size="12" fill="#222">online -35  |  eval -13  |  falls 522</text>
+</svg>
