@@ -5,7 +5,7 @@ How the integer agents migrate into the real CPU-frequency tuner
 
 | File | Purpose |
 |------|---------|
-| `qlearn_tunner.c` | The real (kernel) tuner. Currently a heuristic; now also emits a trace line per event for offline tuning. Uses kernel headers (does **not** build on a host). |
+| `qlearn_tunner.c` | The real (kernel) tuner — integration target. Kept private (not in this repo); it uses kernel headers and emits a trace line per event for offline tuning. |
 | `dfc_qlearn_sim.c` | Host-buildable simulator. Wraps every agent behind one `init/select/destroy` vtable and runs them through a simulated tuner with kernel-like structs. |
 | `tuner_plug_example.c` | The init-once / per-event controller lifecycle with a reward function (`rl_controller.h`). |
 | `qlearn_agent_example.c` | Minimal feature-vector usage of a single agent. |

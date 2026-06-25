@@ -128,7 +128,7 @@ subset of `struct __sched_ind_qlearn_features`). Relevant files:
                 env_*.h (6 environments), rl_controller.h, rl_harness.h, qlearn.h
     src/        cliff_wind_qlearn.c, phone_sim.c, swirl_sim.c, *_gpu.cu
     contest/    contest.c, tournament.c, runner.c, pathviz.c, reg_*.c, qval_*.c
-    tunner/     qlearn_tunner.c, dfc_qlearn_sim.c, *_example.c, environment_description.md
+    tunner/     dfc_qlearn_sim.c, *_example.c, environment_description.md
     tools/      plot_svg.py (pure-stdlib SVG)
     docs/       q-learning.md, rl/*.md, img/ (example outputs)
 
