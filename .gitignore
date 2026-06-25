@@ -1,0 +1,15 @@
+# build artifacts
+/cliff
+/cliff_gpu
+/agent_demo
+/tuner_plug
+/phone_sim
+/swirl_sim
+/contest_run
+/tournament_run
+*.o
+
+# generated plots / data
+/results/
+/pathviz
+/runner
